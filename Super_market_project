@@ -1,0 +1,233 @@
+'''from datetime import datetime
+name = input("enter your name:")
+# List of items
+lists = '''
+'''Rice       Rs 10/kg
+Sugar      Rs 8/kg
+Oil        Rs 30/liter
+Salt       Rs 25/kg
+Paneer     Rs 40/kg
+Maggie     Rs 12/pack
+Boost      Rs 200/bottle'''
+'''
+#Declaration
+price = 0
+pricelist=[]
+totalprice = 0
+finalprice = 0
+ilist=[]
+qlist=[]
+plist=[]
+
+# Rate for each item
+items = {'rice': 10, 'sugar': 8, 'oil': 30, 'salt': 25, 'paneer': 40, 'maggie': 12, 'boost': 200}
+
+while True:
+    option = input("Press 1 for list or 2 to exit:")
+    if option == "2":
+        print("Thank you for shopping")
+        break
+    elif option== "1":
+        print(lists)
+        
+        while True:
+            inpt1 = input("To buy press 1 or 2 to exit:")
+            if inpt1 == "2":
+                print("Thank you shopping")
+                break
+            elif inpt1 == "1":
+                item = (input("enter the item name:")).lower()
+                while True:
+                    inpt2 = input("enter the quantity:")
+                    if inpt2.isdigit():
+                        quantity = int(inpt2)
+                        break
+                    else:
+                        print("enter the valid number")
+
+                if item in items:
+                    price = quantity*items[item]
+                    pricelist.append((item, quantity,items[item], price))
+                    totalprice+=price
+                    ilist.append(item)
+                    qlist.append(quantity)
+                    plist.append(price)
+                else:
+                    print("Selected item is not available")
+    if totalprice>0:
+        tax = totalprice*12/100
+        finalprice =tax + totalprice
+    print("="*25, "Pythonlife supermarket", "="*25)
+    print(" "*25, "Hyderabad")
+    print("Name:", name, "-"*30)
+    now = datetime.now()
+    print(now)
+    print(75 * "-")
+    print("sno", 10 * " ", 'items', 8 * " ", 'quantity', 8 * " ", 'price')
+    for i in range (len(pricelist)):
+        print(i, 13*" ", ilist[i], 8*" ", qlist[i], 8*" ", plist[i], 8*" " )
+    print(75 * "-")
+    print(50 * " ", 'Total amount:', 'Rs', totalprice)
+    print("Tax amount", 50* " ", "Rs", "Tax")
+    print(75 * "-")
+    print(50 * " ", 'Final amount:', 'Rs', finalprice)
+    print(75*"-")
+    print(20 * " ", "Thank you & Visit again")
+    break''''''
+
+#Write a python function named factorial that takes a positive integer n as input and returns
+#its factorial
+def factorial():
+    n = int(input("enter the value:"))
+    fact = 1
+    for i in range (1,n+1):
+        fact*=i
+    return fact
+obj = factorial()
+print(obj)'''
+
+#Bank management system project
+'''class bank:
+    def __init__(self,username,password):
+        self.username = username
+        self.password=password
+        self.balance=0
+        self.statement = []
+    def deposit(self,amount):
+        if amount <=0:
+            print("enter a positive amount")
+        else:
+            self.balance+=amount
+            self.statement.append(f"deposited:{amount}")
+            print(f"The {amount} credited succesfully into your account")
+    def withdraw(self,amount):
+        if amount<=0:
+            print("enter a positive amount")
+        elif amount>=self.balance:
+            print("enter the valid amount")
+        else:
+            self.balance-=amount
+            self.statement.append(f"withdrawed:{amount}")
+            print(f"The {amount} has been debited successfully into your account")
+    def show_balance(self):
+        print(f"The remaining balance is {self.balance}")
+    def mini_statement(self):
+        if not self.statement:
+            print("No transactions yet!")
+        else:
+            print("\nMini statement:")
+            for tx in self.statement[-5:]:
+                print(tx)
+SBI = bank("lekhana","1234")
+account = None
+while True:
+    print("choose an option \n1.Create an account \n2.login to account \n3.exit")
+    choice = input("enter the choice 1-3:")
+    if choice == "1":
+        inpt1 = input("enter the username:")
+        inpt2 = input("enter the password:")
+        account = bank(inpt1,inpt2)
+        print("Account created successfully")
+        print("-"*25,"Welcome to Python Bank","-"*25)
+    elif choice == "2":
+        if account is None:
+            print("No account found, Please create it")
+        else:
+            inpt3 = input("enter the username:")
+            inpt4 = input("enter the password:")
+            if inpt3==account.username and inpt4==account.password:
+                print("Login Successfull")
+            else:
+                print("invalid credentials")
+    elif choice == "3":
+        print("Thank you for choosing the bank")
+        break
+    else:
+        print("Invalid choice")
+    while True:
+        print("\nBank menu")
+        print("1.deposit")
+        print("2. withdraw")
+        print("3.balance")
+        print("4.mini statement")
+        print("5.Logout")
+        choice= input("enter the choice 1-5:")
+        if choice == "1":
+            amount = float(input("enter the amount to deposit:"))
+            account.deposit(amount)
+        elif choice == "2":
+            amount = float(input("enter the amount to withdraw:"))
+            account.withdraw(amount)
+        elif choice == "3":
+            account.show_balance()
+        elif choice == "4":
+            account.mini_statement()
+        elif choice == "5":
+            print("Thank you, Bye!")
+        else:
+            print("Invalid choice")
+
+
+#Error Handlings
+try:
+    n1 = int(input("enter the value:"))
+    n2 = int(input("enter the value:"))
+    print(n1+n2)
+    print(n1/n2)
+except ZeroDivisionError as e:
+    print(e)
+
+try:
+    n1 = int(input("enter the value:"))
+    n2 = int(input("enter the value:"))
+    print(n1+n2)
+    print(n1/n2)
+except ValueError as e:
+    print(e)
+
+try:
+    n1 = int(input("enter the value:"))
+    n2 = int(input("enter the value:"))
+    print(n1+n2)
+    print(n1/n2)
+except Exception as e:
+    print(e)
+
+list = [1,2,4,5,9,7]
+try:
+    print(list[6])
+except:
+    print("error")
+else:
+    print(list[0])
+finally:
+    print("Thank you")
+
+list = [1,2,4,5,9,7]
+try:
+    print(list[3])
+except:
+    print("error")
+else:
+    print(list[0])
+finally:
+    print("Thank you")
+
+try:
+    n1 = int(input("enter the value:"))
+    n2 = int(input("enter the value:"))
+    print(n1+n2)
+    print(n1/n2)
+except ValueError as e:
+    print(e)'''
+
+try:
+    list = [1,2,4,5,9,7]
+    print(list[3])
+except:
+    print("error")
+else:
+    print(list[0])
+finally:
+    print("Thank you")
+

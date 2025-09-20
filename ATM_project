@@ -1,0 +1,165 @@
+'''def ATM_machine(starting_balance=0):
+    balance = starting_balance
+    while True:
+        print("\nATM Menu:")
+        print("1.Credit")
+        print("2. Debit")
+        print("3. Balance")
+        print("4. Exit")
+    
+        choice = input("Enter your choice (1-4): ")
+    
+        if choice == '1':
+            amount = float(input("Enter amount to credit: "))
+            if amount <= 0:
+                print("Please enter a positive amount.")
+            else:
+                balance += amount
+                print(f"${amount} credited to your account.")
+        elif choice == '2':
+            amount = float(input("Enter amount to debit: "))
+            if amount <= 0:
+                print("Please enter a positive amount.")
+            elif amount > balance:
+                print("Insufficient balance.")
+            else:
+                balance -= amount
+                print(f"${amount} debited from your account.")
+        elif choice == '3':
+            print(f"Your current balance is: ${balance}")
+        elif choice == '4':
+            print("Thank you for using the ATM. Goodbye!")
+            return balance
+        else:
+            print("Invalid choice. Please try again.")
+
+obj = ATM_machine(starting_balance=0)
+print(f"The final amout is {obj}")
+
+def square_all(numbers):
+    return list(map(lambda a:a**2, list1))
+list1 = [1,2,3,4,5]
+result=square_all(list)
+print(result)
+
+
+#Implementing an ATM program using object-oriented programming (OOP) concepts class and object
+class ATM():
+    def __init__(self,branchname,location,model):
+        self.branchname = branchname
+        self.location = location
+        self.model = model
+        self.balance = 0
+    def credit(self,amount):
+        if amount <= 0:
+            print("enter a positive amount")
+        else:
+            self.balance += amount
+            print(f" {amount} is credit into your account successfully")
+    def debit(self, amount):
+        if amount>self.balance:
+            print("enter the valid amount")
+        elif amount<=0:
+            print("please enter a positive amount")    
+        else:
+            self.balance-=amount
+            print(f"The {amount} succesfully debit from your {self.model} account") 
+    def show_balance(self):
+        print(f"your current balance at {self.location} is {self.balance}")
+sbi = ATM("Sbi bank","Hyderabd", "ModelX")
+while True:
+    print("\nATM menu:")
+    print("1.Credit")
+    print("2.Debit")
+    print("3.Balance")
+    print("4.Exit")
+
+    choice= input("enter your choice 1-4:")
+    if choice == "1":
+        amount = float(input("enter the amount to credit:"))
+        sbi.credit(amount)
+    elif choice == "2":
+        amount = float(input("enter the amount to debit"))
+        sbi.debit(amount)
+    elif choice == "3":
+        sbi.show_balance()
+    elif choice == "4":
+        print("Thank you for using the ATM")
+        break
+    else:
+        print("invalid information. Please try again")'''
+
+#Practicing using inheritance and polymorphism  by writing a program and sharing the file. implement in ATM
+class atm:
+    def __init__(self,branch,location,model):
+        self.branch = branch
+        self.location = location
+        self.model = model
+        self.balance = 0
+    def credit(self,amount):
+        if amount <=0:
+            print("enter a positive amount")
+        else:
+            self.balance+=amount
+            print(f"The {amount} credited succesfully into {self.branch}")
+    def debit(self,amount):
+        if amount<=0:
+            print("enter a positive amount")
+        elif amount>=self.balance:
+            print("enter the valid amount")
+        else:
+            self.balance-=amount
+            print(f"The {amount} has been debited successfully into {self.branch}")
+    def show_balance(self):
+        print(f"The remaining balance is {self.balance}")
+class SBIATM(atm):
+    def show_balance(self):
+        print(f"SBI bank atm {self.location},your current balance is {self.balance}")
+class HDFCATM(atm):
+    def show_balance(self):
+        print(f"HDFC bank atm {self.location},your current balance is {self.balance}")
+atm = SBIATM("SBI bank","hyderabad","X")
+atm = HDFCATM("HDFC bank","mumbai","Y")
+while True:
+    print("choose atm bank: \n1.SBI \n2.HDFC")
+    choice = input("enter the choice:")
+    if choice == "1":
+        atm = SBIATM("SBI bank","hyderabad","X")
+        print("Thank you for choosing SBI")
+        input("press enter to continue")
+    elif choice=="2":
+        atm = HDFCATM("HDFC bank","mumbai","Y")
+        print("Thank you for choosing HDFC")
+        input("press enter to continue")
+    else:
+        print("invalid choice")
+    while True:
+        print("\natm Menu")
+        print("1.credit")     
+        print("2.debit")      
+        print("3.balance")    
+        print("4.change the bank")
+        print("5.exit")
+        choice = input("enter your choice 1-5:")   
+        if choice=="1":
+            amount=float(input("enter the amount to credit:"))
+            atm.credit(amount)
+        elif choice=="2":
+            amount=float(input("enter the amount:"))
+            atm.debit(amount)
+        elif choice=="3":
+            atm.show_balance()
+        elif choice=="4":
+            print("Switching the bank....")
+            break
+        elif choice =="5" :
+            print("Thank you for using atm")
+            exit()
+        else:
+            print("invalid choice")
+
+#Bank management system project
+class bank:
+    def __init__(self,username,password,balance):
+        self.username = username
+        
